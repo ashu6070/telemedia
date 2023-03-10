@@ -6,7 +6,7 @@ pipeline {
 	
 		stage ("stage-1") {
 		
-			stapes { 
+			steps { 
 			
 				sh "mkdir rash"
 				
