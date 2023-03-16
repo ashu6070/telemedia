@@ -13,7 +13,7 @@ pipeline {
 		
 			steps { 
 			
-				sh "sudo docker stop httpd-1
+				sh "sudo docker stop httpd-1"
 				sh "sudo docker rm httpd-1"
 				sh "sudo docker volume creat index"
 				sh "sudo cp /mnt/index.html /var/lib/docker/volumes/index/_data/"
