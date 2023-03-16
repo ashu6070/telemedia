@@ -1,6 +1,11 @@
 pipeline {
 
-	agent any	
+	agent {
+		label {
+			label "slave-1"
+			customWrokspace "/mnt/project"
+		}
+	}
 	
 	stages {
 	
@@ -8,7 +13,11 @@ pipeline {
 		
 			steps { 
 			
-				sh "mkdir rash"
+				sh "sudo docker stop httpd-1
+				sh "sudo docker rm httpd-1"
+				sh "sudo docker volume creat index"
+				sh "sudo cp /mnt/index.html /var/lib/docker/volumes/index/_data/"
+				sh "sudo docker run -itdp 8080:80 -v index:/usr/local/apache2/htdocs --name httpd-2 http"
 				
 				}
 			}
