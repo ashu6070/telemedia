@@ -1,6 +1,10 @@
 pipeline {
 
-	agent any	
+	agent {
+		label {
+			label "slave-1"
+		}
+	}	
 	
 	stages {
 	
@@ -8,8 +12,11 @@ pipeline {
 		
 			steps { 
 			
-				sh "mkdir rash"
-				
+				sh "sudo yum install docker -y"
+				sh "sudo systemctl start docker"
+				sh "sudo echo "application of telemedia" >> /mnt
+				sh "sudo run -itdp 80:80 --name httpd-1 httpd"
+				sh "sudo cp /mnt/index.html httpd-1/usr/local/apache2/htdocs/"
 				}
 			}
 		}
